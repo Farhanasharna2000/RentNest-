@@ -1,6 +1,6 @@
 
 const createUser = async () => {};
 
-export const authService = {
+export const paymentService = {
   createUser,
 };

@@ -2,7 +2,14 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import config from "./config";
-import { prisma } from "./lib/prisma";
+import { userRoutes } from "./modules/users/users.route";
+import { categoryRoutes } from "./modules/categories/category.route";
+import { propertyRoutes } from "./modules/properties/property.route";
+import { rentalRoutes } from "./modules/rentals/rental.route";
+import { paymentRoutes } from "./modules/payments/payment.route";
+import { reviewRoutes } from "./modules/reviews/review.route";
+import { adminRoutes } from "./modules/admin/admin.route";
+import { authRoutes } from "./modules/auth/auth.route";
 
 
 
@@ -25,8 +32,21 @@ app.get("/", async (req: Request, res: Response) => {
 //   console.log("Hello Farhana Sharna!");
 
 });
-// app.use("/api/users",userRoutes);
-// app.use("/api/auth",authRoutes);
+app.use("/auth", authRoutes);
+
+app.use("/users", userRoutes);
+
+app.use("/categories", categoryRoutes);
+
+app.use("/properties", propertyRoutes);
+
+app.use("/rentals", rentalRoutes);
+
+app.use("/payments", paymentRoutes);
+
+app.use("/reviews", reviewRoutes);
+
+app.use("/admin", adminRoutes);
 
 
 

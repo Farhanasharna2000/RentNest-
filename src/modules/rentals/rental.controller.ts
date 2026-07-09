@@ -7,6 +7,6 @@ const createUser = catchAsync(
 );
 
 
-export const authController = {
+export const rentalController = {
 createUser
 };
