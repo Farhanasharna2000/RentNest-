@@ -10,6 +10,7 @@ import { paymentRoutes } from "./modules/payments/payment.route";
 import { reviewRoutes } from "./modules/reviews/review.route";
 import { adminRoutes } from "./modules/admin/admin.route";
 import { authRoutes } from "./modules/auth/auth.route";
+import { globalErrorHandler } from "./middlewares/globalErrorHandler";
 
 
 
@@ -32,22 +33,22 @@ app.get("/", async (req: Request, res: Response) => {
 //   console.log("Hello Farhana Sharna!");
 
 });
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 
-app.use("/users", userRoutes);
+app.use("/api/users", userRoutes);
 
-app.use("/categories", categoryRoutes);
+app.use("/api/categories", categoryRoutes);
 
-app.use("/properties", propertyRoutes);
+app.use("/api/properties", propertyRoutes);
 
-app.use("/rentals", rentalRoutes);
+app.use("/api/rentals", rentalRoutes);
 
-app.use("/payments", paymentRoutes);
+app.use("/api/payments", paymentRoutes);
 
-app.use("/reviews", reviewRoutes);
+app.use("/api/reviews", reviewRoutes);
 
-app.use("/admin", adminRoutes);
+app.use("/api/admin", adminRoutes);
 
-
+app.use(globalErrorHandler);
 
 export default app;
