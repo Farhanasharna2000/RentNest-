@@ -6,7 +6,7 @@ model Payment{
 
  amount Decimal
 
- transactionId String?
+ transactionId String? @unique
 
  provider PaymentProvider
 
@@ -15,5 +15,7 @@ model Payment{
  paidAt DateTime?
 
  rentalRequest RentalRequest @relation(fields:[rentalRequestId],references:[id])
+
+ updatedAt DateTime @updatedAt
 
 }

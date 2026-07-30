@@ -1,39 +1,43 @@
-model Property{
+model Property {
+    id String @id @default(uuid())
 
- id String @id @default(uuid())
+    title String
 
- title String
+    description String
 
- description String
+    address String
+    city    String
 
- location String
+    rent Decimal @db.Decimal(10, 2)
 
- rent Decimal
+    bedrooms Int
 
- bedrooms Int
+    bathrooms Int
 
- bathrooms Int
+    amenities String[]
 
- amenities String[]
+    images String[]
 
- images String[]
+    status PropertyStatus @default(AVAILABLE)
 
- status PropertyStatus @default(AVAILABLE)
+    landlordId String
 
- landlordId String
+    categoryId String
 
- categoryId String
+    landlord User @relation(fields: [landlordId], references: [id])
 
- landlord User @relation(fields:[landlordId],references:[id])
+    category Category @relation(fields: [categoryId], references: [id])
 
- category Category @relation(fields:[categoryId],references:[id])
+    rentals RentalRequest[]
 
- rentals RentalRequest[]
+    reviews Review[]
 
- reviews Review[]
+    createdAt DateTime @default(now())
 
- createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
- updatedAt DateTime @updatedAt
-
+    @@index([city])
+    @@index([status])
+    @@index([categoryId])
+    @@index([landlordId])
 }

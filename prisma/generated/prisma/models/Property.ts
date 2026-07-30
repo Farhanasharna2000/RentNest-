@@ -42,7 +42,8 @@ export type PropertyMinAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
-  location: string | null
+  address: string | null
+  city: string | null
   rent: runtime.Decimal | null
   bedrooms: number | null
   bathrooms: number | null
@@ -57,7 +58,8 @@ export type PropertyMaxAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
-  location: string | null
+  address: string | null
+  city: string | null
   rent: runtime.Decimal | null
   bedrooms: number | null
   bathrooms: number | null
@@ -72,7 +74,8 @@ export type PropertyCountAggregateOutputType = {
   id: number
   title: number
   description: number
-  location: number
+  address: number
+  city: number
   rent: number
   bedrooms: number
   bathrooms: number
@@ -103,7 +106,8 @@ export type PropertyMinAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  location?: true
+  address?: true
+  city?: true
   rent?: true
   bedrooms?: true
   bathrooms?: true
@@ -118,7 +122,8 @@ export type PropertyMaxAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  location?: true
+  address?: true
+  city?: true
   rent?: true
   bedrooms?: true
   bathrooms?: true
@@ -133,7 +138,8 @@ export type PropertyCountAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  location?: true
+  address?: true
+  city?: true
   rent?: true
   bedrooms?: true
   bathrooms?: true
@@ -237,7 +243,8 @@ export type PropertyGroupByOutputType = {
   id: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal
   bedrooms: number
   bathrooms: number
@@ -277,7 +284,8 @@ export type PropertyWhereInput = {
   id?: Prisma.StringFilter<"Property"> | string
   title?: Prisma.StringFilter<"Property"> | string
   description?: Prisma.StringFilter<"Property"> | string
-  location?: Prisma.StringFilter<"Property"> | string
+  address?: Prisma.StringFilter<"Property"> | string
+  city?: Prisma.StringFilter<"Property"> | string
   rent?: Prisma.DecimalFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFilter<"Property"> | number
   bathrooms?: Prisma.IntFilter<"Property"> | number
@@ -298,7 +306,8 @@ export type PropertyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   rent?: Prisma.SortOrder
   bedrooms?: Prisma.SortOrder
   bathrooms?: Prisma.SortOrder
@@ -322,7 +331,8 @@ export type PropertyWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PropertyWhereInput | Prisma.PropertyWhereInput[]
   title?: Prisma.StringFilter<"Property"> | string
   description?: Prisma.StringFilter<"Property"> | string
-  location?: Prisma.StringFilter<"Property"> | string
+  address?: Prisma.StringFilter<"Property"> | string
+  city?: Prisma.StringFilter<"Property"> | string
   rent?: Prisma.DecimalFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFilter<"Property"> | number
   bathrooms?: Prisma.IntFilter<"Property"> | number
@@ -343,7 +353,8 @@ export type PropertyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   rent?: Prisma.SortOrder
   bedrooms?: Prisma.SortOrder
   bathrooms?: Prisma.SortOrder
@@ -368,7 +379,8 @@ export type PropertyScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Property"> | string
   title?: Prisma.StringWithAggregatesFilter<"Property"> | string
   description?: Prisma.StringWithAggregatesFilter<"Property"> | string
-  location?: Prisma.StringWithAggregatesFilter<"Property"> | string
+  address?: Prisma.StringWithAggregatesFilter<"Property"> | string
+  city?: Prisma.StringWithAggregatesFilter<"Property"> | string
   rent?: Prisma.DecimalWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntWithAggregatesFilter<"Property"> | number
   bathrooms?: Prisma.IntWithAggregatesFilter<"Property"> | number
@@ -385,7 +397,8 @@ export type PropertyCreateInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -404,7 +417,8 @@ export type PropertyUncheckedCreateInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -423,7 +437,8 @@ export type PropertyUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -442,7 +457,8 @@ export type PropertyUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -461,7 +477,8 @@ export type PropertyCreateManyInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -478,7 +495,8 @@ export type PropertyUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -493,7 +511,8 @@ export type PropertyUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -528,7 +547,8 @@ export type PropertyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   rent?: Prisma.SortOrder
   bedrooms?: Prisma.SortOrder
   bathrooms?: Prisma.SortOrder
@@ -551,7 +571,8 @@ export type PropertyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   rent?: Prisma.SortOrder
   bedrooms?: Prisma.SortOrder
   bathrooms?: Prisma.SortOrder
@@ -566,7 +587,8 @@ export type PropertyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   rent?: Prisma.SortOrder
   bedrooms?: Prisma.SortOrder
   bathrooms?: Prisma.SortOrder
@@ -734,7 +756,8 @@ export type PropertyCreateWithoutCategoryInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -752,7 +775,8 @@ export type PropertyUncheckedCreateWithoutCategoryInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -799,7 +823,8 @@ export type PropertyScalarWhereInput = {
   id?: Prisma.StringFilter<"Property"> | string
   title?: Prisma.StringFilter<"Property"> | string
   description?: Prisma.StringFilter<"Property"> | string
-  location?: Prisma.StringFilter<"Property"> | string
+  address?: Prisma.StringFilter<"Property"> | string
+  city?: Prisma.StringFilter<"Property"> | string
   rent?: Prisma.DecimalFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFilter<"Property"> | number
   bathrooms?: Prisma.IntFilter<"Property"> | number
@@ -816,7 +841,8 @@ export type PropertyCreateWithoutRentalsInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -834,7 +860,8 @@ export type PropertyUncheckedCreateWithoutRentalsInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -868,7 +895,8 @@ export type PropertyUpdateWithoutRentalsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -886,7 +914,8 @@ export type PropertyUncheckedUpdateWithoutRentalsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -904,7 +933,8 @@ export type PropertyCreateWithoutReviewsInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -922,7 +952,8 @@ export type PropertyUncheckedCreateWithoutReviewsInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -956,7 +987,8 @@ export type PropertyUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -974,7 +1006,8 @@ export type PropertyUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -992,7 +1025,8 @@ export type PropertyCreateWithoutLandlordInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -1010,7 +1044,8 @@ export type PropertyUncheckedCreateWithoutLandlordInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -1054,7 +1089,8 @@ export type PropertyCreateManyCategoryInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -1070,7 +1106,8 @@ export type PropertyUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1088,7 +1125,8 @@ export type PropertyUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1106,7 +1144,8 @@ export type PropertyUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1122,7 +1161,8 @@ export type PropertyCreateManyLandlordInput = {
   id?: string
   title: string
   description: string
-  location: string
+  address: string
+  city: string
   rent: runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms: number
   bathrooms: number
@@ -1138,7 +1178,8 @@ export type PropertyUpdateWithoutLandlordInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1156,7 +1197,8 @@ export type PropertyUncheckedUpdateWithoutLandlordInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1174,7 +1216,8 @@ export type PropertyUncheckedUpdateManyWithoutLandlordInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   rent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
   bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1230,7 +1273,8 @@ export type PropertySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  address?: boolean
+  city?: boolean
   rent?: boolean
   bedrooms?: boolean
   bathrooms?: boolean
@@ -1252,7 +1296,8 @@ export type PropertySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  address?: boolean
+  city?: boolean
   rent?: boolean
   bedrooms?: boolean
   bathrooms?: boolean
@@ -1271,7 +1316,8 @@ export type PropertySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  address?: boolean
+  city?: boolean
   rent?: boolean
   bedrooms?: boolean
   bathrooms?: boolean
@@ -1290,7 +1336,8 @@ export type PropertySelectScalar = {
   id?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  address?: boolean
+  city?: boolean
   rent?: boolean
   bedrooms?: boolean
   bathrooms?: boolean
@@ -1303,7 +1350,7 @@ export type PropertySelectScalar = {
   updatedAt?: boolean
 }
 
-export type PropertyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "location" | "rent" | "bedrooms" | "bathrooms" | "amenities" | "images" | "status" | "landlordId" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
+export type PropertyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "address" | "city" | "rent" | "bedrooms" | "bathrooms" | "amenities" | "images" | "status" | "landlordId" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
 export type PropertyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   landlord?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
@@ -1332,7 +1379,8 @@ export type $PropertyPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: string
     title: string
     description: string
-    location: string
+    address: string
+    city: string
     rent: runtime.Decimal
     bedrooms: number
     bathrooms: number
@@ -1773,7 +1821,8 @@ export interface PropertyFieldRefs {
   readonly id: Prisma.FieldRef<"Property", 'String'>
   readonly title: Prisma.FieldRef<"Property", 'String'>
   readonly description: Prisma.FieldRef<"Property", 'String'>
-  readonly location: Prisma.FieldRef<"Property", 'String'>
+  readonly address: Prisma.FieldRef<"Property", 'String'>
+  readonly city: Prisma.FieldRef<"Property", 'String'>
   readonly rent: Prisma.FieldRef<"Property", 'Decimal'>
   readonly bedrooms: Prisma.FieldRef<"Property", 'Int'>
   readonly bathrooms: Prisma.FieldRef<"Property", 'Int'>

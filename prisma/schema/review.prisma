@@ -4,7 +4,7 @@ model Review{
 
  rating Int
 
- comment String
+ comment String?
 
  propertyId String
 
@@ -15,5 +15,6 @@ model Review{
  tenant User @relation(fields:[tenantId],references:[id])
 
  createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
 
 }

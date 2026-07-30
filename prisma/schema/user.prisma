@@ -6,8 +6,9 @@ model User{
   password    String
 
   phone       String?
+  image String?
 
-  role        UserRole
+  role UserRole @default(TENANT)
   status      UserStatus @default(ACTIVE)
 
   createdAt   DateTime @default(now())

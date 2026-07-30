@@ -1,8 +1,12 @@
 import bcrypt from "bcryptjs";
+import config from "../config";
 
 export const hashPassword = (password: string) => {
 
-    return bcrypt.hash(password,10);
+    return bcrypt.hash(
+    password,
+    Number(config.bcrypt_salt_rounds)
+);
 
 };
 

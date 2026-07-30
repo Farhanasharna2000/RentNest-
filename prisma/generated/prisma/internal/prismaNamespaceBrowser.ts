@@ -78,7 +78,8 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -91,7 +92,8 @@ export const PaymentScalarFieldEnum = {
   transactionId: 'transactionId',
   provider: 'provider',
   status: 'status',
-  paidAt: 'paidAt'
+  paidAt: 'paidAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
@@ -101,7 +103,8 @@ export const PropertyScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  location: 'location',
+  address: 'address',
+  city: 'city',
   rent: 'rent',
   bedrooms: 'bedrooms',
   bathrooms: 'bathrooms',
@@ -125,7 +128,8 @@ export const RentalRequestScalarFieldEnum = {
   duration: 'duration',
   message: 'message',
   status: 'status',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type RentalRequestScalarFieldEnum = (typeof RentalRequestScalarFieldEnum)[keyof typeof RentalRequestScalarFieldEnum]
@@ -137,7 +141,8 @@ export const ReviewScalarFieldEnum = {
   comment: 'comment',
   propertyId: 'propertyId',
   tenantId: 'tenantId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -149,6 +154,7 @@ export const UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   phone: 'phone',
+  image: 'image',
   role: 'role',
   status: 'status',
   createdAt: 'createdAt',
