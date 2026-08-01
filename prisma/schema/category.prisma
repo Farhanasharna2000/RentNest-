@@ -8,5 +8,5 @@ model Category{
  updatedAt DateTime @updatedAt
 
  properties Property[]
-
+@@map("Categories")
 }

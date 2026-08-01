@@ -1,13 +1,18 @@
 import { Router } from "express";
 import { rentalController } from "./rental.controller";
-
+import { auth } from "../../middlewares/auth";
 
 const router = Router();
 
+// Tenant Routes
+router.post("/", auth("TENANT"), rentalController.createRentalRequest);
+router.get("/", auth("TENANT"), rentalController.getTenantRentalRequests);
 
-router.get("/", rentalController.createUser);
+// Landlord Routes
+router.get("/landlord/requests", auth("LANDLORD"), rentalController.getLandlordRentalRequests);
+router.patch("/landlord/requests/:id", auth("LANDLORD"), rentalController.updateRentalRequestStatus);
 
-
-
+// Shared Route
+router.get("/:id", auth("TENANT", "LANDLORD", "ADMIN"), rentalController.getRentalRequestDetails);
 
 export const rentalRoutes = router;

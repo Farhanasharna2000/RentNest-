@@ -1,6 +1,9 @@
 
-const createUser = async () => {};
+
+const createReview = async (tenantId: string, payload: { propertyId: string, rating: number, comment?: string }) => {
+  
+};
 
 export const reviewService = {
-  createUser,
+  createReview
 };

@@ -17,4 +17,6 @@ model User{
   properties      Property[]
   rentalRequests  RentalRequest[]
   reviews         Review[]
+
+  @@map("Users")
 }

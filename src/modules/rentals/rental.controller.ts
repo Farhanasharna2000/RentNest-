@@ -2,11 +2,30 @@ import { NextFunction, Request, Response } from "express";
 import { catchAsync } from "../../utils/catchAsync";
 
 
-const createUser = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {},
-);
+const createRentalRequest = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+  
+});
 
+const getTenantRentalRequests = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+  
+});
+
+const getRentalRequestDetails = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+  
+});
+
+const getLandlordRentalRequests = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+  
+});
+
+const updateRentalRequestStatus = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+ 
+});
 
 export const rentalController = {
-createUser
+  createRentalRequest,
+  getTenantRentalRequests,
+  getRentalRequestDetails,
+  getLandlordRentalRequests,
+  updateRentalRequestStatus
 };

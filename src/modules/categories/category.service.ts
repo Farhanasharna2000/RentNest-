@@ -1,6 +1,14 @@
+import { prisma } from "../../lib/prisma";
 
-const createUser = async () => {};
+const createCategory = async (payload: { name: string }) => {
+
+};
+
+const getAllCategories = async () => {
+ 
+};
 
 export const categoryService = {
-  createUser,
+  createCategory,
+  getAllCategories
 };

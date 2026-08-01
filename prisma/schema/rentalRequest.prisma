@@ -24,4 +24,5 @@ model RentalRequest{
 
  updatedAt DateTime @updatedAt
 
+@@map("RentalRequests")
 }

@@ -40,4 +40,6 @@ model Property {
     @@index([status])
     @@index([categoryId])
     @@index([landlordId])
+
+    @@map("Properties")
 }
