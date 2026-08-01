@@ -65,23 +65,23 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 ### Authentication
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/auth/register` | Register new user (tenant/landlord) |
-| POST | `/api/auth/login` | Login user, return JWT |
-| GET | `/api/auth/me` | Get current authenticated user |
+| POST | `/api/auth/register` | Register new user (tenant/landlord) | ❤️
+| POST | `/api/auth/login` | Login user, return JWT | ❤️
+| GET | `/api/auth/me` | Get current authenticated user | ❤️
 
 ### Properties (Public)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/properties` | Get all properties with filters (location, price, type) |
-| GET | `/api/properties/:id` | Get property details |
-| GET | `/api/categories` | Get all property categories |
+| GET | `/api/properties` | Get all properties with filters (location, price, type) | ❤️
+| GET | `/api/properties/:id` | Get property details | ❤️
+| GET | `/api/categories` | Get all property categories | ❤️
 
 ### Landlord Management
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/landlord/properties` | Create new property listing |
-| PUT | `/api/landlord/properties/:id` | Update property listing |
-| DELETE | `/api/landlord/properties/:id` | Remove property listing |
+| POST | `/api/landlord/properties` | Create new property listing | ❤️
+| PUT | `/api/landlord/properties/:id` | Update property listing | ❤️
+| DELETE | `/api/landlord/properties/:id` | Remove property listing | ❤️
 | GET | `/api/landlord/requests` | Get all rental requests for landlord's properties |
 | PATCH | `/api/landlord/requests/:id` | Approve or reject a rental request |
 
@@ -108,10 +108,10 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 ### Admin
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/admin/users` | Get all users |
-| PATCH | `/api/admin/users/:id` | Update user status (ban/unban) |
-| GET | `/api/admin/properties` | Get all properties |
-| GET | `/api/admin/rentals` | Get all rental requests |
+| GET | `/api/admin/users` | Get all users | ❤️
+| PATCH | `/api/admin/users/:id` | Update user status (ban/unban) | ❤️
+| GET | `/api/admin/properties` | Get all properties | ❤️
+| GET | `/api/admin/rentals` | Get all rental requests | ❤️
 
 ---
 
