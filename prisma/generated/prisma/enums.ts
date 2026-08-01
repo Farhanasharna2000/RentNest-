@@ -38,9 +38,7 @@ export type PropertyStatus = (typeof PropertyStatus)[keyof typeof PropertyStatus
 export const RentalStatus = {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',
-  REJECTED: 'REJECTED',
-  ACTIVE: 'ACTIVE',
-  COMPLETED: 'COMPLETED'
+  REJECTED: 'REJECTED'
 } as const
 
 export type RentalStatus = (typeof RentalStatus)[keyof typeof RentalStatus]
