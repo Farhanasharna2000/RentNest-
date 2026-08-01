@@ -103,7 +103,7 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 ### Reviews
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/reviews` | Create review (after completed rental) |
+| POST | `/api/reviews` | Create review (after completed rental) | ❤️
 
 ### Admin
 | Method | Endpoint | Description |
