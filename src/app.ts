@@ -11,6 +11,7 @@ import { adminRoutes } from "./modules/admin/admin.route";
 import { authRoutes } from "./modules/auth/auth.route";
 import { globalErrorHandler } from "./middlewares/globalErrorHandler";
 import { landlordPropertyRoutes } from "./modules/properties/landlordProperty.route";
+import { landlordRoutes } from "./modules/rentals/landlord.route";
 
 
 
@@ -42,6 +43,8 @@ app.use("/api/properties", propertyRoutes);
 app.use("/api/rentals", rentalRoutes);
 
 app.use("/api/landlord/properties", landlordPropertyRoutes);
+app.use("/api/landlord", landlordRoutes);
+
 
 app.use("/api/payments", paymentRoutes);
 

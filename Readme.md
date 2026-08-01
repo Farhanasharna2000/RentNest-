@@ -9,7 +9,7 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 
 ---
 
-## Roles & Permissions
+## Roles & Permissions 
 
 | Role | Description | Key Permissions |
 |------|-------------|-----------------|
@@ -82,15 +82,15 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 | POST | `/api/landlord/properties` | Create new property listing | ❤️
 | PUT | `/api/landlord/properties/:id` | Update property listing | ❤️
 | DELETE | `/api/landlord/properties/:id` | Remove property listing | ❤️
-| GET | `/api/landlord/requests` | Get all rental requests for landlord's properties |
-| PATCH | `/api/landlord/requests/:id` | Approve or reject a rental request |
+| GET | `/api/landlord/requests` | Get all rental requests for landlord's properties | ❤️
+| PATCH | `/api/landlord/requests/:id` | Approve or reject a rental request | ❤️
 
 ### Rental Requests
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/rentals` | Submit a rental request (tenant) |
-| GET | `/api/rentals` | Get user's rental requests |
-| GET | `/api/rentals/:id` | Get rental request details |
+| POST | `/api/rentals` | Submit a rental request (tenant) | ❤️
+| GET | `/api/rentals` | Get user's rental requests | ❤️
+| GET | `/api/rentals/:id` | Get rental request details | ❤️
 
 ### Payments (Stripe / SSLCommerz)
 | Method | Endpoint | Description |

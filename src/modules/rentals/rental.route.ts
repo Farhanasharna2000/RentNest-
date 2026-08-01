@@ -8,9 +8,7 @@ const router = Router();
 router.post("/", auth("TENANT"), rentalController.createRentalRequest);
 router.get("/", auth("TENANT"), rentalController.getTenantRentalRequests);
 
-// Landlord Routes
-router.get("/landlord/requests", auth("LANDLORD"), rentalController.getLandlordRentalRequests);
-router.patch("/landlord/requests/:id", auth("LANDLORD"), rentalController.updateRentalRequestStatus);
+
 
 // Shared Route
 router.get("/:id", auth("TENANT", "LANDLORD", "ADMIN"), rentalController.getRentalRequestDetails);
