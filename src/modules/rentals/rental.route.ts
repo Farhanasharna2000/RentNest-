@@ -13,4 +13,4 @@ router.get("/", auth("TENANT"), rentalController.getTenantRentalRequests);
 // Shared Route
 router.get("/:id", auth("TENANT", "LANDLORD", "ADMIN"), rentalController.getRentalRequestDetails);
 
-export const rentalRoutes = router;
+export const rentalRoutes: Router = router;
