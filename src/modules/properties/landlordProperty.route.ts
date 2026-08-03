@@ -10,4 +10,4 @@ router.post("/", propertyController.createProperty);
 router.put("/:id", propertyController.updateProperty);
 router.delete("/:id", propertyController.deleteProperty);
 
-export const landlordPropertyRoutes = router;
+export const landlordPropertyRoutes:Router = router;
