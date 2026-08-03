@@ -17,8 +17,16 @@ function parseRoutes(fileContent: string): { method: string; path: string }[] {
   const routes: { method: string; path: string }[] = [];
   let match: RegExpExecArray | null;
   while ((match = routeRegex.exec(fileContent)) !== null) {
-    routes.push({ method: match[1].toUpperCase(), path: match[2] });
-  }
+  const method = match[1];
+  const routePath = match[2];
+
+  if (!method || !routePath) continue;
+
+  routes.push({
+    method: method.toUpperCase(),
+    path: routePath,
+  });
+}
   return routes;
 }
 
@@ -26,11 +34,14 @@ function parseMounts(appContent: string): Record<string, string> {
   const mountRegex = /app\.use\s*\(\s*['"]([^'\"]+)['"]\s*,\s*([a-zA-Z0-9_]+)\s*\)/g;
   const mounts: Record<string, string> = {};
   let match: RegExpExecArray | null;
-  while ((match = mountRegex.exec(appContent)) !== null) {
-    const basePath = match[1];
-    const routerVar = match[2];
-    mounts[routerVar] = basePath;
-  }
+ while ((match = mountRegex.exec(appContent)) !== null) {
+  const basePath = match[1];
+  const routerVar = match[2];
+
+  if (!basePath || !routerVar) continue;
+
+  mounts[routerVar] = basePath;
+}
   return mounts;
 }
 
@@ -57,7 +68,7 @@ async function main() {
       // Determine router variable name from import or fallback to file name
       const importMatch = /import\s*\{\s*([a-zA-Z0-9_]+)\s*\}\s*from\s*"\.\/([a-zA-Z0-9_]+)\.controller"/.exec(content);
       const routerVar = importMatch ? importMatch[1] : routeFile.replace('.route.ts', 'Routes');
-      const mountPath = mounts[routerVar] || '';
+      const mountPath = routerVar ? (mounts[routerVar] ?? "") : "";
       for (const r of routes) {
         const fullPath = path.posix.join(mountPath, r.path);
         endpoints.push({ method: r.method, path: fullPath, module: modName });
