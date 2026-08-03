@@ -9,4 +9,4 @@ router.post("/confirm", auth("TENANT"), paymentController.confirmPayment);
 router.get("/", auth("TENANT"), paymentController.getUserPaymentHistory);
 router.get("/:id", auth("TENANT"), paymentController.getPaymentDetails);
 
-export const paymentRoutes: Router = router;
+export const paymentRoutes = router;

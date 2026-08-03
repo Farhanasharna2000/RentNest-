@@ -6,4 +6,4 @@ const router = Router();
 
 router.post("/", auth("TENANT"), reviewController.createReview);
 
-export const reviewRoutes: Router = router;
+export const reviewRoutes = router;

@@ -16,4 +16,4 @@ router.patch(
   rentalController.updateRentalRequestStatus
 );
 
-export const landlordRoutes:Router = router;
+export const landlordRoutes = router;

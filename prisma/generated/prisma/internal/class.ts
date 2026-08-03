@@ -17,8 +17,8 @@ import type * as Prisma from "./prismaNamespace"
 
 const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
-  "clientVersion": "7.8.0",
-  "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
+  "clientVersion": "7.9.1",
+  "engineVersion": "e922089b7d7502aff4249d5da3420f6fa55fc6ad",
   "activeProvider": "postgresql",
   "inlineSchema": "model Category {\n  id String @id @default(uuid())\n\n  name String @unique\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  properties Property[]\n\n  @@map(\"Categories\")\n}\n\nenum UserRole {\n  TENANT\n  LANDLORD\n  ADMIN\n}\n\nenum UserStatus {\n  ACTIVE\n  BANNED\n}\n\nenum PropertyStatus {\n  AVAILABLE\n  RENTED\n  UNAVAILABLE\n}\n\nenum RentalStatus {\n  PENDING\n  APPROVED\n  REJECTED\n}\n\nenum PaymentStatus {\n  PENDING\n  COMPLETED\n  FAILED\n}\n\nenum PaymentProvider {\n  STRIPE\n  SSLCOMMERZ\n}\n\nmodel Payment {\n  id String @id @default(uuid())\n\n  rentalRequestId String @unique\n\n  amount Decimal\n\n  transactionId String? @unique\n\n  provider PaymentProvider\n\n  status PaymentStatus @default(PENDING)\n\n  paidAt DateTime?\n\n  rentalRequest RentalRequest @relation(fields: [rentalRequestId], references: [id])\n\n  updatedAt DateTime @updatedAt\n\n  @@map(\"Payments\")\n}\n\nmodel Property {\n  id String @id @default(uuid())\n\n  title String\n\n  description String\n\n  address String\n  city    String\n\n  rent Decimal @db.Decimal(10, 2)\n\n  bedrooms Int\n\n  bathrooms Int\n\n  amenities String[]\n\n  images String[]\n\n  status PropertyStatus @default(AVAILABLE)\n\n  landlordId String\n\n  categoryId String\n\n  landlord User @relation(fields: [landlordId], references: [id])\n\n  category Category @relation(fields: [categoryId], references: [id])\n\n  rentals RentalRequest[]\n\n  reviews Review[]\n\n  createdAt DateTime @default(now())\n\n  updatedAt DateTime @updatedAt\n\n  @@index([city])\n  @@index([status])\n  @@index([categoryId])\n  @@index([landlordId])\n  @@map(\"Properties\")\n}\n\nmodel RentalRequest {\n  id String @id @default(uuid())\n\n  tenantId String\n\n  propertyId String\n\n  moveInDate DateTime\n\n  duration Int\n\n  message String?\n\n  status RentalStatus @default(PENDING)\n\n  tenant User @relation(fields: [tenantId], references: [id])\n\n  property Property @relation(fields: [propertyId], references: [id])\n\n  payment Payment?\n\n  createdAt DateTime @default(now())\n\n  updatedAt DateTime @updatedAt\n\n  @@map(\"RentalRequests\")\n}\n\nmodel Review {\n  id String @id @default(uuid())\n\n  rating Int\n\n  comment String?\n\n  propertyId String\n\n  tenantId String\n\n  property Property @relation(fields: [propertyId], references: [id])\n\n  tenant User @relation(fields: [tenantId], references: [id])\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"Reviews\")\n}\n\n// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id String @id @default(uuid())\n\n  name     String\n  email    String @unique\n  password String\n\n  phone String?\n  image String?\n\n  role   UserRole   @default(TENANT)\n  status UserStatus @default(ACTIVE)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  properties     Property[]\n  rentalRequests RentalRequest[]\n  reviews        Review[]\n\n  @@map(\"Users\")\n}\n",
   "runtimeDataModel": {
@@ -82,7 +82,7 @@ export interface PrismaClientConstructor {
     LogOpts extends LogOptions<Options> = LogOptions<Options>,
     OmitOpts extends Prisma.PrismaClientOptions['omit'] = Options extends { omit: infer U } ? U : Prisma.PrismaClientOptions['omit'],
     ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs
-  >(options: Prisma.Subset<Options, Prisma.PrismaClientOptions> ): PrismaClient<LogOpts, OmitOpts, ExtArgs>
+  >(options: Prisma.PrismaClientConstructorArgs<Options>): PrismaClient<LogOpts, OmitOpts, ExtArgs>
 }
 
 /**
@@ -103,7 +103,7 @@ export interface PrismaClientConstructor {
 
 export interface PrismaClient<
   in LogOpts extends Prisma.LogLevel = never,
-  in out OmitOpts extends Prisma.PrismaClientOptions['omit'] = undefined,
+  in out OmitOpts extends Prisma.PrismaClientOptions['omit'] = Prisma.PrismaClientOptions['omit'],
   in out ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }

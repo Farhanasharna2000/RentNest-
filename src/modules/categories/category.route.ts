@@ -7,4 +7,4 @@ const router = Router();
 router.post("/", auth("ADMIN"), categoryController.createCategory);
 router.get("/", categoryController.getAllCategories);
 
-export const categoryRoutes: Router = router;
+export const categoryRoutes = router;
