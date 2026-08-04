@@ -6,7 +6,7 @@ const createReview = async (tenantId: string, payload: { propertyId: string, rat
     where: {
       tenantId,
       propertyId: payload.propertyId,
-      status: "APPROVED"
+      status: "COMPLETED"
     }
   });
 

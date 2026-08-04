@@ -1,0 +1,792 @@
+{
+  "info": {
+    "_postman_id": "252e0fe8-985a-4417-b095-c32ab127ed27",
+    "name": "Rent_Nest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52389886",
+    "_collection_link": "https://go.postman.co/collection/52389886-252e0fe8-985a-4417-b095-c32ab127ed27?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "//ADMIN\r\n// {\r\n//   \"name\": \"Farhana Sharna\",\r\n//   \"email\": \"sharna@gmail.com\",\r\n//   \"password\": \"Password@123\",\r\n//   \"phone\": \"+8801712345678\",\r\n//   \"image\": \"https://example.com/images/farhana.jpg\",\r\n//   \"role\": \"ADMIN\"\r\n// }\r\n//LANDLORD\r\n// {\r\n//   \"name\": \"Nondini\",\r\n//   \"email\": \"nondini@gmail.com\",\r\n//   \"password\": \"Password@123\",\r\n//   \"phone\": \"+8801712345678\",\r\n//   \"image\": \"https://example.com/images/farhana.jpg\",\r\n//   \"role\": \"LANDLORD\"\r\n// }\r\n\r\n//TENANT\r\n{\r\n  \"name\": \"Adrita\",\r\n  \"email\": \"adrita@gmail.com\",\r\n  \"password\": \"Password@123\",\r\n  \"phone\": \"+8801712345678\",\r\n  \"image\": \"https://example.com/images/farhana.jpg\",\r\n  \"role\": \"TENANT\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Admin}}/api/auth/register",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/auth/me",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Extract 'token' from JSON response and set as Postman variable\r",
+                  "let jsonData;\r",
+                  "try {\r",
+                  "    jsonData = pm.response.json();\r",
+                  "    if (jsonData && jsonData.data.accessToken) {\r",
+                  "        pm.collectionVariables.set('token', jsonData.data.accessToken);\r",
+                  "        pm.test('Token variable is set', function () {\r",
+                  "            pm.expect(pm.collectionVariables.get('token')).to.eql(jsonData.data.accessToken);\r",
+                  "        });\r",
+                  "    } else {\r",
+                  "        pm.test('Token field is missing in response', function () {\r",
+                  "            pm.expect(jsonData && jsonData.token, 'Token field exists').to.be.ok;\r",
+                  "        });\r",
+                  "    }\r",
+                  "} catch (e) {\r",
+                  "    pm.test('Response is valid JSON', function () {\r",
+                  "        pm.expect.fail('Response is not valid JSON');\r",
+                  "    });\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "//Admin\n// {\n//   \"email\": \"sharna@gmail.com\",\n//   \"password\": \"Password@123\"\n// }\n\n//Landlord\n// {\n//   \"email\": \"nondini@gmail.com\",\n//   \"password\": \"Password@123\"\n// }\n\n//Tenant\n{\n  \"email\": \"adrita@gmail.com\",\n  \"password\": \"Password@123\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/auth/login",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/admin/users",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"BANNED\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/admin/users/47efb657-0625-4169-9308-4ddbe46c4454",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "users",
+                "47efb657-0625-4169-9308-4ddbe46c4454"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Properties",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/admin/properties",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Rentals",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/admin/rentals",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rentals",
+      "item": [
+        {
+          "name": "Create Rental Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"propertyId\": \"c3b69941-9207-466f-af1f-7ad094da3d0e\",\n  \"moveInDate\": \"2024-01-01T00:00:00.000Z\",\n  \"duration\": 12,\n  \"message\": \"I am interested .\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/rentals",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Tenant Rental Requests",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/rentals",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Landlord Rental Requests",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/landlord/requests",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "landlord",
+                "requests"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Rental Request Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"APPROVED\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/landlord/requests/352e1b5b-7fa8-4ab9-9c81-18663713ccf8",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "landlord",
+                "requests",
+                "352e1b5b-7fa8-4ab9-9c81-18663713ccf8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Rental Request Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/rentals/ca57cb02-d6c2-4dbb-9bef-2a75b088c7ff",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "rentals",
+                "ca57cb02-d6c2-4dbb-9bef-2a75b088c7ff"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Properties",
+      "item": [
+        {
+          "name": "Create Property",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Beautiful Apartment22\",\n  \"description\": \"A very nice place to live.\",\n  \"address\": \"123 Main St\",\n  \"city\": \"New York\",\n  \"rent\": 150,\n  \"bedrooms\": 2,\n  \"bathrooms\": 1,\n  \"amenities\": [\"WiFi\", \"Parking\"],\n  \"images\": [\"image1.jpg\"],\n  \"categoryId\": \"3ba9ac06-ff31-4119-8af1-f3822fd593d7\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/landlord/properties",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "landlord",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Property",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rent\": 91\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/landlord/properties/5f1f51de-12b7-4831-a585-c7c03ba0f785",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "landlord",
+                "properties",
+                "5f1f51de-12b7-4831-a585-c7c03ba0f785"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Property",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{Admin}}/api/landlord/properties/05d68558-f762-4c08-a079-a4c213d8dfa8",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "landlord",
+                "properties",
+                "05d68558-f762-4c08-a079-a4c213d8dfa8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Properties",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Admin}}/api/properties",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Property By ID",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Admin}}/api/properties/c0a01210-6276-43e2-a8e2-b5dde8e2c5c0",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "properties",
+                "c0a01210-6276-43e2-a8e2-b5dde8e2c5c0"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Flat\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/categories",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Admin}}/api/categories",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"propertyId\": \"c0a01210-6276-43e2-a8e2-b5dde8e2c5c0\",\n  \"rating\": 5,\n  \"comment\": \"Great place!\"\n}"
+            },
+            "url": {
+              "raw": "{{Admin}}/api/reviews",
+              "host": [
+                "{{Admin}}"
+              ],
+              "path": [
+                "api",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rentalRequestId\": \"<rental-request-id>\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/payments/create",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payments",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"txn_123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/payments/confirm",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payments",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Payment History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/payments/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payments",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/payments/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<payment-id>"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "Admin",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "secret": true
+    }
+  ]
+}
