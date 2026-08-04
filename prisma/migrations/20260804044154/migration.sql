@@ -1,52 +1,20 @@
-/*
-  Warnings:
+-- CreateEnum
+CREATE TYPE "UserRole" AS ENUM ('TENANT', 'LANDLORD', 'ADMIN');
 
-  - You are about to drop the `Category` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Payment` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Property` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `RentalRequest` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Review` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
+-- CreateEnum
+CREATE TYPE "UserStatus" AS ENUM ('ACTIVE', 'BANNED');
 
-*/
--- DropForeignKey
-ALTER TABLE "Payment" DROP CONSTRAINT "Payment_rentalRequestId_fkey";
+-- CreateEnum
+CREATE TYPE "PropertyStatus" AS ENUM ('AVAILABLE', 'RENTED', 'UNAVAILABLE');
 
--- DropForeignKey
-ALTER TABLE "Property" DROP CONSTRAINT "Property_categoryId_fkey";
+-- CreateEnum
+CREATE TYPE "RentalStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
 
--- DropForeignKey
-ALTER TABLE "Property" DROP CONSTRAINT "Property_landlordId_fkey";
+-- CreateEnum
+CREATE TYPE "PaymentStatus" AS ENUM ('PENDING', 'COMPLETED', 'FAILED');
 
--- DropForeignKey
-ALTER TABLE "RentalRequest" DROP CONSTRAINT "RentalRequest_propertyId_fkey";
-
--- DropForeignKey
-ALTER TABLE "RentalRequest" DROP CONSTRAINT "RentalRequest_tenantId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Review" DROP CONSTRAINT "Review_propertyId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Review" DROP CONSTRAINT "Review_tenantId_fkey";
-
--- DropTable
-DROP TABLE "Category";
-
--- DropTable
-DROP TABLE "Payment";
-
--- DropTable
-DROP TABLE "Property";
-
--- DropTable
-DROP TABLE "RentalRequest";
-
--- DropTable
-DROP TABLE "Review";
-
--- DropTable
-DROP TABLE "User";
+-- CreateEnum
+CREATE TYPE "PaymentProvider" AS ENUM ('STRIPE', 'SSLCOMMERZ');
 
 -- CreateTable
 CREATE TABLE "Categories" (
