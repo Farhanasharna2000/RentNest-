@@ -19,6 +19,7 @@ enum RentalStatus {
   PENDING
   APPROVED
   REJECTED
+  COMPLETED
 }
 
 enum PaymentStatus {

@@ -923,6 +923,7 @@ export const PaymentScalarFieldEnum = {
   provider: 'provider',
   status: 'status',
   paidAt: 'paidAt',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 

@@ -10,10 +10,16 @@ import { rentalRoutes } from "./modules/rentals/rental.route";
 import { propertyRoutes } from "./modules/properties/property.route";
 import { categoryRoutes } from "./modules/categories/category.route";
 import { authRoutes } from "./modules/auth/auth.route";
+import { paymentController } from "./modules/payments/payment.controller";
 
 
 const app: Application = express();
 
+app.post(
+  "/api/payments/webhook",
+  express.raw({ type: "application/json" }),
+  paymentController.webhook
+);
 
 app.use(express.json());
 app.use(cookieParser());

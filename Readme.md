@@ -21,12 +21,6 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 
 ---
 
-## Tech Stack
-
-🛠️ **See [README.md](./README.md#-tech-stack) for complete technology specifications.**
-
----
-
 ## Features
 
 ### Public Features
@@ -60,7 +54,6 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 
 ## API Endpoints
 
-> ⚠️ **Note**: These endpoints are examples. You may add, edit, or remove endpoints based on your implementation needs.
 
 ### Authentication
 | Method | Endpoint | Description |
@@ -112,21 +105,6 @@ RentNest is a backend API for a rental property marketplace. Landlords can list 
 | PATCH | `/api/admin/users/:id` | Update user status (ban/unban) | ❤️
 | GET | `/api/admin/properties` | Get all properties | ❤️
 | GET | `/api/admin/rentals` | Get all rental requests | ❤️
-
----
-
-## Database Tables
-
-Design your own schema for the following tables:
-
-- **Users** - Store user information, authentication details, and role
-- **Properties** - Rental property listings (linked to landlord)
-- **Categories** - Property type categories (apartment, house, studio, etc.)
-- **RentalRequests** - Rental requests between tenants and landlords
-- **Payments** - Payment transactions (transactionId, rentalRequestId, amount, method, provider [Stripe/SSLCommerz], status [pending/completed/failed], paidAt, etc.)
-- **Reviews** - Tenant reviews for properties
-
-> 💡 *Think about what fields each table needs based on the features above.*
 
 ---
 
