@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get("/", (_req, res) => {
-  res.send("My Rent Nest Server is running");
+  res.send("My RentNest Server is running successfully");
 });
 
 app.use("/api/auth", authRoutes);
