@@ -660,37 +660,6 @@
           "response": []
         },
         {
-          "name": "Confirm Payment",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"transactionId\": \"txn_123456\"\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/payments/confirm",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "payments",
-                "confirm"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Get User Payment History",
           "request": {
             "method": "GET",
